@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+                  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    ----welcome to indexPage----
+    <p th:text="${msg}"></p>
+
+<h4>---------输出对象信息------</h4>
+<p th:text="${user.id}"></p>
+<p th:text="${user.name}"></p>
+<p th:text="${user.age}"></p>
+<p th:text="${user.address}"></p>
+<hr/>
+    <p th:text="${userInfo.id}"></p>
+    <p th:text="${userInfo.name}"></p>
+    <p th:text="${userInfo.age}"></p>
+    <p th:text="${userInfo.address}"></p>
+ <hr/>
+<h4>------输出Map集合信息-----</h4>
+    <img th:src="${pictures.pic1}" />
+    <img th:src="${pictures.pic2}" />
+
+ <h4>------循环输出List集合信息-----</h4>
+    <table>
+        <tr>
+            <td>编号</td>
+            <td>姓名</td>
+            <td>年龄</td>
+            <td>地址</td>
+        </tr>
+        <tr th:each=" user, iterStat:${userList}">
+            <td th:text="${iterStat.index}"></td>
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.address}"></td>
+            <td th:text="${user.id}"></td>
+        </tr>
+    </table>
+    <h5>-----------if条件判断--------------</h5>
+    <p th:if="${msg== 'HelloThymeleaf'}" >条件成立, 显示该语句</p>
+    <p th:unless="${msg == 'HelloThymeleaf'}">条件不成立, 不显示该语句</p>
+
+<h5>---------------string----------</h5>
+<p th:if="${#strings.isEmpty(str)}">hello world</p>
+<p th:text="${#strings.substring(str,0,5)}">hello world</p>
+<p th:text="${#strings.abbreviate(str, 10)}">hello world</p>
+
+<h5>---------时间----------</h5>
+<p th:text="${#dates.format(date, 'yyyy-MM-dd HH:mm:ss')}">4535</p>
+<p th:text="${#numbers.formatDecimal(num, 4, 2)}">4353543</p>
+</body>
+</html>
