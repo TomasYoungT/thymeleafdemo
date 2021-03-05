@@ -60,4 +60,6 @@ public class ThymeleafController {
         return "index";
     }
 
+    @GetMapping("/test")
+    public String test(){return null;}
 }
